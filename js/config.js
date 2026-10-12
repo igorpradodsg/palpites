@@ -7,6 +7,6 @@
 // Onde encontrar: Supabase > Project Settings > API Keys (Project URL e
 // "Publishable key", que começa com sb_publishable_).
 export const CONFIG = {
-  SUPABASE_URL: 'COLE_AQUI_A_PROJECT_URL',
-  SUPABASE_KEY: 'COLE_AQUI_A_PUBLISHABLE_KEY',
+  SUPABASE_URL: 'https://wzclntogykbqzodnhbfq.supabase.co',
+  SUPABASE_KEY: 'sb_publishable_M88XFk4RQRC8advqS_4MOw_DJGzmAEx', 
 };
