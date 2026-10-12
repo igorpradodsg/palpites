@@ -3,48 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teste de persistência</title>
+  <!-- Política de segurança do conteúdo: só código e arquivos do próprio site,
+       e conexões apenas com o próprio site e o Supabase. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://*.supabase.co; base-uri 'none'; form-action 'self'">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Box, Box! | Campeonato de Palpites</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-  <h1>Teste de persistência</h1>
-  <pre id="saida"></pre>
-  <button id="gravar">Gravar</button>
-  <button id="limpar">Limpar</button>
-
-  <script>
-    const saida = document.getElementById('saida');
-
-    // Executa uma função e devolve o resultado, ou o nome do erro se o navegador bloquear.
-    function tentar(fn) {
-      try { return fn(); } catch (e) { return 'ERRO: ' + e.name; }
-    }
-
-    async function mostrar() {
-      const linhas = [];
-      linhas.push('Dentro de iframe: ' + (window.top !== window.self));
-      linhas.push('localStorage: ' + tentar(() => localStorage.getItem('teste') ?? '(vazio)'));
-      linhas.push('cookie: ' + (document.cookie.includes('teste=') ? 'presente' : '(vazio)'));
-      if (document.hasStorageAccess) {
-        try { linhas.push('Acesso a armazenamento: ' + await document.hasStorageAccess()); }
-        catch (e) { linhas.push('Acesso a armazenamento: ERRO ' + e.name); }
-      }
-      saida.textContent = linhas.join('\n');
-    }
-
-    document.getElementById('gravar').onclick = () => {
-      const agora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-      tentar(() => localStorage.setItem('teste', agora));
-      tentar(() => { document.cookie = 'teste=1; max-age=86400; path=/; Secure; SameSite=None'; });
-      mostrar();
-    };
-
-    document.getElementById('limpar').onclick = () => {
-      tentar(() => localStorage.removeItem('teste'));
-      tentar(() => { document.cookie = 'teste=; max-age=0; path=/; Secure; SameSite=None'; });
-      mostrar();
-    };
-
-    mostrar();
-  </script>
+  <div id="app"><p class="aviso">Carregando…</p></div>
+  <div id="toasts" aria-live="polite"></div>
+  <noscript><p class="aviso">Este site precisa de JavaScript para funcionar.</p></noscript>
+  <script src="js/vendor/supabase.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

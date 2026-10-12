@@ -1,0 +1,3 @@
+Pasta das imagens de cada evento (logotipo do GP e traçado do circuito).
+Os arquivos são citados pelo nome na interface do ADM. Use somente letras,
+números, hífen, ponto e sublinhado nos nomes (ex.: gp-brasil.svg).
