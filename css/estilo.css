@@ -42,8 +42,9 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   position: sticky; top: 0; z-index: 10;
 }
 .marca img { display: block; height: 44px; width: auto; }
-.conta { display: flex; gap: .5rem; justify-content: flex-end; align-items: center; }
-.nav { grid-column: 1 / -1; display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; }
+.conta { grid-column: 2; grid-row: 1; display: flex; gap: .5rem; justify-content: flex-end; align-items: center; }
+.marca { grid-column: 1; grid-row: 1; }
+.nav { grid-column: 1 / -1; grid-row: 2; display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; }
 .nav::-webkit-scrollbar { display: none; }
 .nav-link {
   color: var(--prata); text-decoration: none; padding: .45rem .8rem; border-radius: var(--raio);
@@ -154,7 +155,9 @@ select.campo option:disabled { color: #666; }
 @media (min-width: 720px) {
   h1 { font-size: 2.1rem; }
   .topo { grid-template-columns: auto 1fr auto; padding: .6rem 1.4rem; }
-  .nav { grid-column: auto; justify-content: center; overflow: visible; }
+  .marca { grid-column: 1; grid-row: 1; }
+  .nav { grid-column: 2; grid-row: 1; justify-content: center; overflow: visible; }
+  .conta { grid-column: 3; grid-row: 1; }
   .pagina { padding: 1.8rem 1.4rem 3rem; }
   .filtros { grid-template-columns: 1fr 260px; }
   .marca img { height: 52px; }
